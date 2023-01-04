@@ -1,4 +1,5 @@
 [package]
+name = "hi-bot"
 version = "0.1.0"
 edition = "2021"
 
@@ -9,7 +10,7 @@ serenity = { version = "0.11.5", default_features = false, features = [
     "client",
     "model",
     "gateway",
-    "native_tls_backend",
+    "rustls_backend",
 ] }
 tokio = { version = "1.23.0", features = ["rt", "rt-multi-thread", "macros"] }
 tracing = "0.1"
