@@ -1,6 +1,6 @@
 use std::env;
-use std::error::Error;
 
+use anyhow::Result;
 use serenity::model::prelude::{EmojiId, Message, ReactionType};
 use serenity::{async_trait, prelude::*};
 use tracing::{error, info, Level};
@@ -21,7 +21,7 @@ impl EventHandler for Handler {
 }
 
 #[tokio::main]
-async fn main() -> Result<(), Box<dyn Error>> {
+async fn main() -> Result<()> {
     dotenv::dotenv()?;
     let subscriber = FmtSubscriber::builder()
         .with_max_level(Level::INFO)
@@ -39,7 +39,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 
-async fn on_hi(ctx: Context, msg: &Message) -> Result<(), Box<dyn Error>> {
+async fn on_hi(ctx: Context, msg: &Message) -> Result<()> {
     let emoji_id = EmojiId(env::var("EMOJI_ID")?.parse()?);
     let emoji_name = env::var("EMOJI_NAME")?;
 
