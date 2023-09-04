@@ -22,6 +22,7 @@ impl EventHandler for Handler {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
+    dotenv::dotenv()?;
     let subscriber = FmtSubscriber::builder()
         .with_max_level(Level::INFO)
         .finish();
