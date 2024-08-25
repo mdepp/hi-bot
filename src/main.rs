@@ -40,7 +40,7 @@ async fn main() -> Result<()> {
 }
 
 async fn on_hi(ctx: Context, msg: &Message) -> Result<()> {
-    let emoji_id = EmojiId(env::var("EMOJI_ID")?.parse()?);
+    let emoji_id = EmojiId::new(env::var("EMOJI_ID")?.parse()?);
     let emoji_name = env::var("EMOJI_NAME")?;
 
     msg.react(
